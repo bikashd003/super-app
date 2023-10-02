@@ -1,6 +1,48 @@
-#container {
+#category-container {
   background-color: black;
   width: 100vw;
   height: 100vh;
   color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.left-category {
+  flex: 1 0 0;
+}
+.left-category h2 {
+  color: #72DB73;
+  font-family: "Single Day", cursive;
+  font-size: 2.5vw;
+  font-weight: 400;
+  margin: 4vw auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.left-category h1 {
+  font-family: "Roboto";
+  font-size: 2.3vw;
+  width: 15vw;
+  margin: 0 auto;
+  line-height: 3.5vw;
+}
+
+.right-category {
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2vw;
+}
+
+.movie-container {
+  background-color: #FF5209;
+  border-radius: 10px;
 }/*# sourceMappingURL=Category.css.map */
