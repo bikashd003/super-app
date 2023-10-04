@@ -11,28 +11,33 @@
 .left-category {
   flex: 1 0 0;
 }
-.left-category h2 {
-  color: #72DB73;
+.left-category .left-container {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 8vw auto 0;
+}
+.left-category .left-container h2 {
+  color: #72db73;
   font-family: "Single Day", cursive;
   font-size: 2.5vw;
   font-weight: 400;
-  margin: 4vw auto;
+  margin-bottom: 4vw;
   width: -moz-fit-content;
   width: fit-content;
 }
-.left-category h1 {
+.left-category .left-container h1 {
   font-family: "Roboto";
   font-size: 2.3vw;
   width: 15vw;
-  margin: 0 auto;
   line-height: 3.5vw;
 }
 
 .right-category {
-  flex: 1 0 0;
+  flex: 1.5 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .category-list {
@@ -43,6 +48,77 @@
 }
 
 .movie-container {
-  background-color: #FF5209;
   border-radius: 10px;
+  font-family: "DM sans";
+  font-size: 0.8vmax;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 0.3vw;
+}
+.movie-container img {
+  height: 7vw;
+  width: 11vw;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.selected-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  width: 15vw;
+  margin: 2vw auto;
+}
+
+.selected-type {
+  display: flex;
+  justify-content: space-around;
+  background-color: #148a08;
+  border-radius: 50px;
+  width: 7vw;
+  padding: 0.2vw 0.5vw;
+}
+.selected-type span {
+  font-family: "Roboto";
+  font-size: 0.9vw;
+  font-weight: 400;
+  padding: 0.2vw 1vw;
+}
+.selected-type button {
+  border: 0;
+  outline: none;
+  font-size: 1vw;
+  color: #085c00;
+  background: none;
+  cursor: pointer;
+}
+
+.warning {
+  margin-top: 5vw;
+  color: #ff0000;
+  font-family: "Roboto";
+  font-size: 1rem;
+}
+.warning img {
+  height: 20px;
+  width: 20px;
+}
+
+.next {
+  background-color: #148a08;
+  font-family: "DM sans";
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 1vw;
+  border: 0;
+  outline: none;
+  border-radius: 50px;
+  padding: 0.2vw 1.5vw;
+  margin: 0 0 0 auto;
+  grid-column: 3/4;
+}
+
+.movie-container.selected {
+  outline: 4px solid green;
 }/*# sourceMappingURL=Category.css.map */

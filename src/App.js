@@ -10,13 +10,14 @@ const App = () => {
       <div id="App">
         <Routes>
           <Route
-            exact path="/register"
+            exact path="/"
             element={<Signup />}
           />
           <Route
             exact path="/category"
             element={<Category />}
           />
+        
         </Routes>
 
       </div>
