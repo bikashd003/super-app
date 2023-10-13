@@ -21,7 +21,7 @@ const Timer = () => {
   const [minutes, setMinutes] = useState("00");
   const [seconds, setSeconds] = useState("00");
   const [duration, setDuration] = useState(0);
-  const [start, setStart] = useState(true);
+  const [start, setStart] = useState(false);
   const [countOver, setCountOver] = useState(false);
 
   const hoursIncrease = () => {
@@ -42,17 +42,23 @@ const Timer = () => {
   const hoursDecrease = () => {
     let newValue = parseInt(hours, 10) - 1;
     newValue = newValue < 10 ? `0${newValue}` : newValue.toString();
-    setHours(newValue);
+    if (newValue >= 0) {
+      setHours(newValue);
+    }
   };
   const minutesDecrease = () => {
     let newValue = parseInt(minutes, 10) - 1;
     newValue = newValue < 10 ? `0${newValue}` : newValue.toString();
-    setMinutes(newValue);
+    if (newValue >= 0) {
+      setMinutes(newValue);
+    }
   };
   const secondsDecrease = () => {
     let newValue = parseInt(seconds, 10) - 1;
     newValue = newValue < 10 ? `0${newValue}` : newValue.toString();
-    setSeconds(newValue);
+    if (newValue >= 0) {
+      setSeconds(newValue);
+    }
   };
   const handleTimer = () => {
     const numHours = Number(hours);
@@ -60,16 +66,20 @@ const Timer = () => {
     const numSeconds = Number(seconds);
     const totalTime = numHours * 3600 + numMinutes * 60 + numSeconds;
     setDuration(totalTime);
-    setStart(false);
-    if (!start) {
+    setStart(true);
+    if (start) {
       setDuration(0);
+      setStart(false);
+    } else {
+      setDuration(totalTime);
+      setStart(true);
     }
   };
   useEffect(() => {
     if (countOver) {
       const audioElement = new Audio(countdown);
       audioElement.play();
-      setStart(true);
+      setStart(false);
     }
   }, [countOver]);
   return (
@@ -85,7 +95,7 @@ const Timer = () => {
               colors={["#FF6A6A"]}
               onComplete={() => {
                 setCountOver(true);
-                return[{shouldRepeat: false}]
+                return [{ shouldRepeat: false }];
               }}
             >
               {renderTime}
@@ -96,28 +106,28 @@ const Timer = () => {
             <div className="set-timer">
               <div className="hours">
                 <p>Hours</p>
-                <BiSolidUpArrow onClick={hoursIncrease} />
+                <BiSolidUpArrow onClick={hoursIncrease} className="arrow"/>
                 <h1>{hours}</h1>
-                <BiSolidDownArrow onClick={hoursDecrease} />
+                <BiSolidDownArrow onClick={hoursDecrease} className="arrow"/>
               </div>
               <h1 className="timer-colon">:</h1>
               <div className="minutes">
                 <p>Minutes</p>
-                <BiSolidUpArrow onClick={minutesIncrease} />
+                <BiSolidUpArrow onClick={minutesIncrease} className="arrow"/>
                 <h1>{minutes}</h1>
-                <BiSolidDownArrow onClick={minutesDecrease} />
+                <BiSolidDownArrow onClick={minutesDecrease} className="arrow"/>
               </div>
               <h1 className="timer-colon">:</h1>
 
               <div className="seconds">
                 <p>Seconds</p>
-                <BiSolidUpArrow onClick={secondsIncrease} />
+                <BiSolidUpArrow onClick={secondsIncrease} className="arrow"/>
                 <h1>{seconds}</h1>
-                <BiSolidDownArrow onClick={secondsDecrease} />
+                <BiSolidDownArrow onClick={secondsDecrease} className="arrow"/>
               </div>
             </div>
             <button className="start" onClick={handleTimer}>
-              {start ? "start" : "stop"}
+              {start ? "stop" : "start"}
             </button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import image14 from "../Images/image 14.png";
+import image14 from "../Images/avater.png";
 import SelectedCategory from "./SelectedCategory";
 
 const UserDetails = () => {

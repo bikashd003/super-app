@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import newsimg from "../assets/background.jpg";
 import axios from "axios";
 
 const News = () => {
@@ -22,21 +23,24 @@ const News = () => {
   return (
     <>
       {error ? (
-        "Failed"
-      ) : (
-        discription.length > 0 ? (
-          <div className="news">
-            <div className="news-image" style={discription[0].image_url ? { backgroundImage: `url(${discription[0].image_url})` } : {}}>
-              <h1>{discription[0].title}</h1>
-              <p>{discription[0].pubDate}</p>
-            </div>
-            <div className="news-content">
-              <p>{discription[0].content}</p>
-            </div>
+       <h2>Failed to fetch news data</h2>
+      ) : discription.length > 0 ? (
+        <div className="news">
+          <div
+            className="news-image"
+            style={{backgroundImage: discription[0].image_url!==null
+              ?( `url(${discription[0].image_url})`)
+              : discription[0].image_url===null||undefined?(`url(${newsimg})`):{}}}
+          >
+            <h1>{discription[0].title}</h1>
+            <p>{discription[0].pubDate}</p>
           </div>
-        ) : (
-          <p>Loading...</p>
-        )
+          <div className="news-content">
+            <p>{discription[0].content}</p>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
       )}
     </>
   );
